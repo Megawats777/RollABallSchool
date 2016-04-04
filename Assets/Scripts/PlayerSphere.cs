@@ -125,4 +125,14 @@ public class PlayerSphere : MonoBehaviour
             }
         }
     }
+
+    // Allows the player to exit the game
+    private void exitGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
 }
