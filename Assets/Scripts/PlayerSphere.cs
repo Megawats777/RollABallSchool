@@ -31,7 +31,7 @@ public class PlayerSphere : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Perform the sphere's movement    
         sphereMovement();
