@@ -14,6 +14,9 @@ public class CubePickup : MonoBehaviour
     // Reference to the mesh renderer 
     MeshRenderer cubeMesh;
 
+    // Reference to the CubeGameManager
+    CubeGameManager cubeGameManagerRef;
+
     // Use this for initialization
     void Start()
     {
@@ -22,6 +25,9 @@ public class CubePickup : MonoBehaviour
 
         // Get the mesh renderer
         cubeMesh = GetComponent<MeshRenderer>();
+
+        // Get the CubeGameManager
+        cubeGameManagerRef = FindObjectOfType<CubeGameManager>();
     }
 
     // Update is called once per frame
@@ -39,6 +45,9 @@ public class CubePickup : MonoBehaviour
         {
             // Disable the cube
             disableCube();
+
+            // Subtract 1 from the amount of level pickups
+            cubeGameManagerRef.levelPickupsAmount--;
         }
     }
 
@@ -59,13 +68,14 @@ public class CubePickup : MonoBehaviour
     }
 
     // Enable the cube
-    private void enableCube()
+    public void enableCube()
     {
         // Enable the box collider
         collisionBox.enabled = true;
 
         // Enable the mesh renderer
         cubeMesh.enabled = true;
+
     }
 
 }

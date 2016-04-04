@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11473832}
   m_Layer: 0
   m_Name: PlayerSphere
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.615, z: 0}
+  m_LocalPosition: {x: 0, y: 1.991, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,6 +91,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b74c5828295f04dab63e692749d14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sphereRb: {fileID: 0}
+  pushForwardForce: 12
+  pushBackwardForce: 12
+  pushRightForce: 12
+  pushLeftForce: 12
+  jumpForce: 150
+  canMove: 1
 --- !u!135 &13531692
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,7 +6,8 @@ public class PlayerSphere : MonoBehaviour
     /*----Variables----*/
 
     // Reference to the rigidbody component
-    Rigidbody sphereRb;
+    [HideInInspector]
+    public Rigidbody sphereRb;
 
     // The amount of force applied to the ball
     public float pushForwardForce = 10.0f;
@@ -17,6 +18,9 @@ public class PlayerSphere : MonoBehaviour
 
     // Can the player sphere jump
     private bool canJump = true;
+
+    // Can the player move
+    public bool canMove = true;
 
     // Use this for initialization
     void Start()
@@ -35,6 +39,8 @@ public class PlayerSphere : MonoBehaviour
     {
         // Perform the sphere's movement    
         sphereMovement();
+
+        exitGame();
     }
 
     // If the player hits can object
@@ -69,8 +75,12 @@ public class PlayerSphere : MonoBehaviour
         // If the player is pressing the push forward button
         if (Input.GetButton("Push Forward"))
         {
-            // Push the sphere forwards
-            sphereRb.AddForce(0.0f, 0.0f, pushForwardForce);
+            // If the player can move
+            if (canMove == true)
+            {
+                // Push the sphere forwards
+                sphereRb.AddForce(0.0f, 0.0f, pushForwardForce);
+            }
         }
     }
 
@@ -80,8 +90,12 @@ public class PlayerSphere : MonoBehaviour
         // If the player is pressing the push backward button
         if (Input.GetButton("Push Backward"))
         {
-            // Push the sphere backwards
-            sphereRb.AddForce(0.0f, 0.0f, pushBackwardForce);
+            // If the player can move
+            if (canMove == true)
+            {
+                // Push the sphere backwards
+                sphereRb.AddForce(0.0f, 0.0f, pushBackwardForce);
+            }
         }
     }
 
@@ -91,8 +105,12 @@ public class PlayerSphere : MonoBehaviour
         // If the player is pressing the push right button
         if (Input.GetButton("Push Right"))
         {
-            // Push the sphere to the right
-            sphereRb.AddForce(pushRightForce, 0.0f, 0.0f);
+            // If the player can move
+            if (canMove == true)
+            {
+                // Push the sphere to the right
+                sphereRb.AddForce(pushRightForce, 0.0f, 0.0f);
+            }
         }
 
     }
@@ -103,8 +121,12 @@ public class PlayerSphere : MonoBehaviour
         // If the player is pressing the push left button
         if (Input.GetButton("Push Left"))
         {
-            // Push the sphere left
-            sphereRb.AddForce(pushLeftForce, 0.0f, 0.0f);
+            // If the player can move
+            if (canMove == true)
+            { 
+                // Push the sphere left
+                sphereRb.AddForce(pushLeftForce, 0.0f, 0.0f);
+            }
         }
     }
 
@@ -117,11 +139,15 @@ public class PlayerSphere : MonoBehaviour
             // If the player is allowed to jump then jump
             if (canJump == true)
             {
-                // Make the sphere jump
-                sphereRb.AddForce(0.0f, jumpForce, 0.0f);
+                // If the player can move
+                if (canMove == true)
+                {
+                    // Make the sphere jump
+                    sphereRb.AddForce(0.0f, jumpForce, 0.0f);
 
-                // Allow the player to no longer jump until the sphere collides with another object
-                canJump = false;
+                    // Allow the player to no longer jump until the sphere collides with another object
+                    canJump = false;
+                }
             }
         }
     }
