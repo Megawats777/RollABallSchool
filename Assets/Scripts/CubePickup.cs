@@ -31,6 +31,17 @@ public class CubePickup : MonoBehaviour
         rotateCube();
     }
 
+    // When the player overalps the box collider
+    void OnTriggerEnter(Collider other)
+    {
+        // Disable the cube when the collider is overlaped by the player
+        if (other.gameObject.tag == "Player")
+        {
+            // Disable the cube
+            disableCube();
+        }
+    }
+
     // Rotate the sphere
     private void rotateCube()
     {
@@ -45,6 +56,16 @@ public class CubePickup : MonoBehaviour
 
         // Disable the mesh renderer
         cubeMesh.enabled = false;
+    }
+
+    // Enable the cube
+    private void enableCube()
+    {
+        // Enable the box collider
+        collisionBox.enabled = true;
+
+        // Enable the mesh renderer
+        cubeMesh.enabled = true;
     }
 
 }
